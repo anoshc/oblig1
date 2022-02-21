@@ -3,12 +3,41 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .brett{
     display: grid;
     grid-template-columns: 150px 150px 150px;
     grid-template-rows: 150px 150px 150px;
+    position: relative;
+}
+
+.rute{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: #382208;
+}
+
+.linje{
+    position: absolute;
+    background-color: #382208;
+    width: 100%;
+    height: 5px;
+}
+
+.horisontal-linje-1{
+    top: 4.4rem;
+}
+
+.horisontal-linje-2{
+    top: 13.8rem;
+}
+
+.horisontal-linje-3{
+    top: 23.2rem;
 }
 
 .venstre-linje, .bunn-linje, .høyre-linje{
