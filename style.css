@@ -1,0 +1,16 @@
+body{
+    background-color: #b87c39;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brett{
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+}
+
+.venstre-linje, .bunn-linje, .høyre-linje{
+    border: 5px solid #734919;
+}
