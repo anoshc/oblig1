@@ -6,6 +6,16 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.x-hover:hover::after{
+    content: "X";
+    opacity: 0.5;
+}
+
+.o-hover:hover::after{
+    content: "O";
+    opacity: 0.5;
+}
+
 h1{
     color: #75464a;
 }
@@ -29,23 +39,27 @@ h1{
     border: 5px solid #aa7c7a;
 }
 
-.horisontal-linje{
+.linje{
     position: absolute;
     background-color: #75464a;
-    width: 100%;
-    height: 5px;
 }
 
 .horisontal-linje-1{
     top: 4.4rem;
+    width: 100%;
+    height: 5px;
 }
 
 .horisontal-linje-2{
     top: 13.8rem;
+    width: 100%;
+    height: 5px;
 }
 
 .horisontal-linje-3{
     top: 23.2rem;
+    width: 100%;
+    height: 5px;
 }
 
 .vertikal-linje{
@@ -82,4 +96,29 @@ h1{
     top: 49%;
     left: 1%;
     transform: skewY(-45deg);
+}
+
+.spill-slutt{
+    text-align: center;
+}
+
+h2{
+    color: #75464a;
+    font-size: 1.5rem;
+}
+
+button{
+    color: #75464a;
+    font-size: 1.3rem;
+    background-color: transparent;
+    border: #75464a 3px dotted;
+    padding: 10px 20px;
+}
+
+.skjult-tekst{
+    display: none;
+}
+
+.synlig-tekst{
+    display: block;
 }
