@@ -25,7 +25,11 @@ h1{
     color: #75464a;
 }
 
-.linje{
+.venstre-linje, .bunn-linje, .høyre-linje{
+    border: 5px solid #aa7c7a;
+}
+
+.horisontal-linje{
     position: absolute;
     background-color: #75464a;
     width: 100%;
@@ -44,6 +48,22 @@ h1{
     top: 23.2rem;
 }
 
-.venstre-linje, .bunn-linje, .høyre-linje{
-    border: 5px solid #aa7c7a;
+.vertikal-linje{
+    position: absolute;
+    background-color: #75464a;
+    height: 100%;
+    width: 5px;
+    top: 0;
+}
+
+.vertikal-linje-1{
+   left: 4.5rem;
+}
+
+.vertikal-linje-2{
+    left: 13.9rem;
+}
+
+.vertikal-linje-3{
+    left: 23.3rem;
 }
