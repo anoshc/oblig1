@@ -67,3 +67,19 @@ h1{
 .vertikal-linje-3{
     left: 23.3rem;
 }
+
+.diagonal-linje-1{
+    width: 98%;
+    height: 5px;
+    top: 49%;
+    left: 1%;
+    transform: skewY(45deg);
+}
+
+.diagonal-linje-2{
+    width: 98%;
+    height: 5px;
+    top: 49%;
+    left: 1%;
+    transform: skewY(-45deg);
+}
