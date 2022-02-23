@@ -6,16 +6,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.x-hover:hover::after {
-    content: "X";
-    opacity: 0.5;
-}
-
-.o-hover:hover::after {
-    content: "O";
-    opacity: 0.5;
-}
-
 h1 {
     color: #75464a;
 }
