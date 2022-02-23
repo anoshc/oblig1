@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #beaba7;
     display: flex;
     flex-direction: column;
@@ -6,28 +6,28 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.x-hover:hover::after{
+.x-hover:hover::after {
     content: "X";
     opacity: 0.5;
 }
 
-.o-hover:hover::after{
+.o-hover:hover::after {
     content: "O";
     opacity: 0.5;
 }
 
-h1{
+h1 {
     color: #75464a;
 }
 
-.brett{
+.brett {
     display: grid;
     grid-template-columns: 150px 150px 150px;
     grid-template-rows: 150px 150px 150px;
     position: relative;
 }
 
-.rute{
+.rute {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,54 +35,57 @@ h1{
     color: #75464a;
 }
 
-.venstre-linje, .bunn-linje, .høyre-linje{
+.venstre-linje,
+.bunn-linje,
+.høyre-linje {
     border: 5px solid #aa7c7a;
 }
 
-.linje{
+.brikke {
     position: absolute;
     background-color: #75464a;
 }
 
-.horisontal-linje-1{
+.horisontal-linje-1 {
     top: 4.4rem;
     width: 100%;
     height: 5px;
 }
 
-.horisontal-linje-2{
+.horisontal-linje-2 {
     top: 13.8rem;
     width: 100%;
     height: 5px;
 }
 
-.horisontal-linje-3{
+.horisontal-linje-3 {
     top: 23.2rem;
     width: 100%;
     height: 5px;
 }
 
-.vertikal-linje{
-    position: absolute;
-    background-color: #75464a;
+.vertikal-linje-1 {
+    left: 4.5rem;
     height: 100%;
     width: 5px;
     top: 0;
 }
 
-.vertikal-linje-1{
-   left: 4.5rem;
-}
-
-.vertikal-linje-2{
+.vertikal-linje-2 {
     left: 13.9rem;
+    height: 100%;
+    width: 5px;
+    top: 0;
 }
 
-.vertikal-linje-3{
+.vertikal-linje-3 {
     left: 23.3rem;
+    height: 100%;
+    width: 5px;
+    top: 0;
 }
 
-.diagonal-linje-1{
+.diagonal-linje-1 {
     width: 98%;
     height: 5px;
     top: 49%;
@@ -90,7 +93,7 @@ h1{
     transform: skewY(45deg);
 }
 
-.diagonal-linje-2{
+.diagonal-linje-2 {
     width: 98%;
     height: 5px;
     top: 49%;
@@ -98,16 +101,16 @@ h1{
     transform: skewY(-45deg);
 }
 
-.spill-slutt{
+.spill-slutt {
     text-align: center;
 }
 
-h2{
+h2 {
     color: #75464a;
     font-size: 1.5rem;
 }
 
-button{
+button {
     color: #75464a;
     font-size: 1.3rem;
     background-color: transparent;
@@ -115,10 +118,10 @@ button{
     padding: 10px 20px;
 }
 
-.skjult-tekst{
+.skjult {
     display: none;
 }
 
-.synlig-tekst{
+.synlig {
     display: block;
 }
