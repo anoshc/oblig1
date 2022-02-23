@@ -1,17 +1,19 @@
+const brikke = document.getElementById("brikke");
+const spillSlutt = document.getElementById("spill-slutt");
+const tekstVinner = document.getElementById("tekst-vinner");
+const prøvIgjen = document.getElementById("prøv-igjen");
+
 const ruter = document.querySelectorAll(".rute")
 const playerX = "X";
 const playerO = "O";
 let tur = playerX;
 
-const brettState = Array(ruter.length);
-brettState.fill(null);
+const spillState = Array(ruter.length);
+spillState.fill(null);
 
-const brikke = document.getElementById("brikke");
-const spillSlutt = document.getElementById("spill-slutt");
-const tekstVinner = document.getElementsByClassName("tekst-vinner");
-const spillIgjen = document.getElementsByClassName("prøv-igjen");
-
-ruter.forEach((rute) => rute.addEventListener("click", ruteClick));
+ruter.forEach(function(rute) {
+    rute.addEventListener("click", ruteClick);
+})
 
 function ruteClick(event) {
     if (spillSlutt.classList.contains("synlig")) {
@@ -26,11 +28,11 @@ function ruteClick(event) {
 
     if (tur === playerX) {
         rute.innerText = playerX;
-        brettState[ruteNummer] = playerX;
+        spillState[ruteNummer] = playerX;
         tur = playerO;
     } else {
         rute.innerText = playerO;
-        brettState[ruteNummer] = playerO;
+        spillState[ruteNummer] = playerO;
         tur = playerX;
     }
 
@@ -42,9 +44,9 @@ function vinnerStatus() {
     for (const vinnerForhold of vinnerKombinasjon) {
 
         const { kombinasjon, brikkeClass } = vinnerForhold;
-        let ruteVerdi1 = brettState[kombinasjon[0]];
-        let ruteVerdi2 = brettState[kombinasjon[1]];
-        let ruteVerdi3 = brettState[kombinasjon[2]];
+        let ruteVerdi1 = spillState[kombinasjon[0]];
+        let ruteVerdi2 = spillState[kombinasjon[1]];
+        let ruteVerdi3 = spillState[kombinasjon[2]];
 
         if (
             ruteVerdi1 != null &&
@@ -52,10 +54,38 @@ function vinnerStatus() {
             ruteVerdi1 === ruteVerdi3
         ) {
             brikke.classList.add(brikkeClass);
-
+            popUp(ruteVerdi1);
+            return;
         }
     }
 
+    // Funksjon som sjekker om det er uavgjort
+
+
+    const markertRuter = spillState.every((rute) => rute !== null);
+    if (markertRuter) {
+        popUp(null);
+    }
+
+}
+
+function popUp(vinnerMelding) {
+    let melding = "Uavgjort";
+    if (vinnerMelding != null) {
+        melding = `Vinneren er spiller ${vinnerMelding}`;
+    }
+    spillSlutt.className = "synlig";
+    tekstVinner.innerText = melding;
+}
+
+prøvIgjen.addEventListener("click", startIgjen);
+
+function startIgjen() {
+    brikke.className = "brikke";
+    spillSlutt.className = "skjult";
+    spillState.fill(null);
+    ruter.forEach((rute) => (rute.innerText = ""));
+    tur = playerX;
 }
 
 const vinnerKombinasjon = [
