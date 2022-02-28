@@ -1,38 +1,52 @@
+// Henter definerte elementer fra html til javascript
 const brikke = document.getElementById("brikke");
 const spillSlutt = document.getElementById("spill-slutt");
 const tekstVinner = document.getElementById("tekst-vinner");
 const prøvIgjen = document.getElementById("prøv-igjen");
 
+// Definerer en variabel som velger alle med class-navnet "rute".
 const ruter = document.querySelectorAll(".rute")
+
+// Definerer en konstant variabel for hver av spillerne, og en variabel som skifter mellom hvem sin tur det er. 
 const playerX = "X";
 const playerO = "O";
 let tur = playerX;
 
-const spillState = Array(ruter.length);
-spillState.fill(null);
+// Definerer en variabel som inneholder en matrise, som videre inneholder hvor mange ruter som er definert.
+const spillArr = Array(ruter.length);
+// Matrisen setter deretter alle verdiene til null
+spillArr.fill(null);
 
+// Legger til en eventListner som er klikkbar for alle rutene på brettet, og referer til en funksjon som er definert lenger ned.
 ruter.forEach(function(rute) {
-    rute.addEventListener("click", ruteClick);
+    rute.addEventListener("click", ruteKlikk);
 })
 
-function ruteClick(event) {
+// Definerer en funksjon:
+// 1. den sjekker om en melding, med spillet er over, har blitt synlig.
+// 2. og videre ikke gjør det mulig å trykke på de resterende rutene.
+function ruteKlikk(event) {
     if (spillSlutt.classList.contains("synlig")) {
         return;
     }
 
+    // Finner ut hvilken av rutene som ble trykket på.
     const rute = event.target;
+    // Finner ut av hvilket rute nummer som ble trykket på.
     const ruteNummer = rute.dataset.index;
+    // Sjekker hvis teksten ikke allerede har en verdi fra før.
     if (rute.innerText != "") {
         return;
     }
 
+    // Sjekker hvem sin tur det er.
     if (tur === playerX) {
         rute.innerText = playerX;
-        spillState[ruteNummer] = playerX;
+        spillArr[ruteNummer] = playerX;
         tur = playerO;
     } else {
         rute.innerText = playerO;
-        spillState[ruteNummer] = playerO;
+        spillArr[ruteNummer] = playerO;
         tur = playerX;
     }
 
@@ -44,9 +58,9 @@ function vinnerStatus() {
     for (const vinnerForhold of vinnerKombinasjon) {
 
         const { kombinasjon, brikkeClass } = vinnerForhold;
-        let ruteVerdi1 = spillState[kombinasjon[0]];
-        let ruteVerdi2 = spillState[kombinasjon[1]];
-        let ruteVerdi3 = spillState[kombinasjon[2]];
+        let ruteVerdi1 = spillArr[kombinasjon[0]];
+        let ruteVerdi2 = spillArr[kombinasjon[1]];
+        let ruteVerdi3 = spillArr[kombinasjon[2]];
 
         if (
             ruteVerdi1 != null &&
@@ -62,7 +76,7 @@ function vinnerStatus() {
     // Funksjon som sjekker om det er uavgjort
 
 
-    const markertRuter = spillState.every((rute) => rute !== null);
+    const markertRuter = spillArr.every((rute) => rute !== null);
     if (markertRuter) {
         popUp(null);
     }
@@ -83,11 +97,12 @@ prøvIgjen.addEventListener("click", startIgjen);
 function startIgjen() {
     brikke.className = "brikke";
     spillSlutt.className = "skjult";
-    spillState.fill(null);
+    spillArr.fill(null);
     ruter.forEach((rute) => (rute.innerText = ""));
     tur = playerX;
 }
 
+// Objekt som beskriver de ulike kombinasjonene det er mulig å vinne, og deretter lager en vinner-strek ut i fra kombinasjonen.
 const vinnerKombinasjon = [
     { kombinasjon: [0, 1, 2], brikkeClass: "horisontal-linje-1" },
     { kombinasjon: [3, 4, 5], brikkeClass: "horisontal-linje-2" },
